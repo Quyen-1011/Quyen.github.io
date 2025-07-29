@@ -22,12 +22,8 @@
     }
 
     .container {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
       max-width: 1000px;
       width: 100%;
-      background: transparent;
       animation: fadeInUp 1s ease;
     }
 
@@ -42,17 +38,25 @@
       }
     }
 
-    .image-section {
-      flex: 1;
+    .top-section {
       display: flex;
-      flex-direction: column;
+      flex-wrap: wrap;
       align-items: center;
+      justify-content: space-between;
       gap: 20px;
     }
 
+    .image-section {
+      display: flex;
+      gap: 20px;
+      flex: 1;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
     .image-section img {
-      width: 260px;
-      height: 360px;
+      width: 240px;
+      height: 340px;
       object-fit: cover;
       border-radius: 16px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.2);
@@ -63,42 +67,43 @@
       transform: scale(1.05);
     }
 
-    .text-section {
+    .name-section {
       flex: 1;
-      padding: 30px;
-      text-align: left;
       display: flex;
-      flex-direction: column;
       justify-content: center;
+      align-items: center;
     }
 
-    .text-section h1 {
+    .name-section h1 {
       font-size: 3em;
       color: #4a148c;
-      margin-bottom: 20px;
+      margin: 0;
     }
 
-    .text-section p {
+    .description {
+      margin-top: 30px;
+      text-align: center;
+    }
+
+    .description p {
       font-size: 1.2em;
       color: #555;
+      max-width: 800px;
+      margin: 0 auto;
       line-height: 1.6;
-      max-width: 500px;
     }
 
     @media (max-width: 768px) {
-      .container {
+      .top-section {
         flex-direction: column;
-        text-align: center;
-      }
-      .text-section {
         align-items: center;
-        text-align: center;
       }
-      .image-section {
-        flex-direction: row;
-        flex-wrap: wrap;
-        justify-content: center;
+
+      .name-section {
+        order: -1;
+        margin-bottom: 20px;
       }
+
       .image-section img {
         width: 45%;
         height: auto;
@@ -109,12 +114,16 @@
 <body>
 
   <div class="container">
-    <div class="image-section">
-      <img src="20240929_131322_140.jpg" alt="Nguyễn Quyên 1">
-      <img src="retouch_2024080217250829.jpg" alt="Nguyễn Quyên 2">
+    <div class="top-section">
+      <div class="image-section">
+        <img src="20240929_131322_140.jpg" alt="Nguyễn Quyên 1">
+        <img src="retouch_2024080217250829.jpg" alt="Nguyễn Quyên 2">
+      </div>
+      <div class="name-section">
+        <h1>Nguyễn Quyên</h1>
+      </div>
     </div>
-    <div class="text-section">
-      <h1>Nguyễn Quyên</h1>
+    <div class="description">
       <p>"An impressive web designer known for fresh, creative ideas through tools like Figma and Canvas. Beyond design, I'm also passionate about music and aspire to become a songwriter."</p>
     </div>
   </div>
