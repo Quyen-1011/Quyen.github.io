@@ -27,7 +27,7 @@
       border-radius: 16px;
       box-shadow: 0 8px 20px rgba(0,0,0,0.1);
       overflow: hidden;
-      max-width: 900px;
+      max-width: 1000px;
       width: 100%;
       animation: fadeInUp 1s ease;
     }
@@ -45,21 +45,23 @@
 
     .image-section {
       flex: 1;
-      min-width: 300px;
+      min-width: 320px;
       background-color: #fafafa;
       display: flex;
-      align-items: center;
+      flex-direction: column;
       justify-content: center;
-      overflow: hidden;
+      align-items: center;
+      padding: 20px;
+      gap: 20px;
     }
 
     .image-section img {
-      width: 100%;
-      height: 100%;
-      max-width: 100%;
+      width: 260px;
+      height: 360px;
       object-fit: cover;
-      border-radius: 0;
-      transition: transform 0.5s ease;
+      border-radius: 16px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      transition: transform 0.4s ease;
     }
 
     .image-section img:hover {
@@ -91,8 +93,13 @@
       .container {
         flex-direction: column;
       }
-      .image-section, .text-section {
-        width: 100%;
+      .image-section {
+        flex-direction: row;
+        flex-wrap: wrap;
+      }
+      .image-section img {
+        width: 45%;
+        height: auto;
       }
     }
   </style>
@@ -101,7 +108,8 @@
 
   <div class="container">
     <div class="image-section">
-      <img src="20240929_131322_140.jpg" alt="Nguyenquyen">
+      <img src="20240929_131322_140.jpg" alt="Nguyễn Quyên 1">
+      <img src="retouch_2024080217250829.jpg" alt="Nguyễn Quyên 2">
     </div>
     <div class="text-section">
       <h1>Nguyễn Quyên</h1>
