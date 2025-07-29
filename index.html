@@ -40,23 +40,20 @@
 
     .top-section {
       display: flex;
-      flex-wrap: wrap;
       align-items: center;
       justify-content: space-between;
       gap: 20px;
+      flex-wrap: wrap;
     }
 
     .image-section {
       display: flex;
       gap: 20px;
-      flex: 1;
-      justify-content: center;
-      flex-wrap: wrap;
     }
 
     .image-section img {
-      width: 240px;
-      height: 340px;
+      width: 220px;
+      height: 300px;
       object-fit: cover;
       border-radius: 16px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.2);
@@ -68,10 +65,10 @@
     }
 
     .name-section {
-      flex: 1;
       display: flex;
       justify-content: center;
       align-items: center;
+      flex: 1;
     }
 
     .name-section h1 {
@@ -99,14 +96,19 @@
         align-items: center;
       }
 
-      .name-section {
-        order: -1;
-        margin-bottom: 20px;
+      .image-section {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
       }
 
       .image-section img {
         width: 45%;
         height: auto;
+      }
+
+      .name-section {
+        margin-top: 20px;
       }
     }
   </style>
