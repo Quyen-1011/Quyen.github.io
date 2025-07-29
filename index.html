@@ -5,6 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Profile</title>
   <style>
+    * {
+      box-sizing: border-box;
+    }
     body {
       margin: 0;
       font-family: 'Segoe UI', sans-serif;
@@ -26,6 +29,18 @@
       overflow: hidden;
       max-width: 900px;
       width: 100%;
+      animation: fadeInUp 1s ease;
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(40px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
     .image-section {
@@ -35,6 +50,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      overflow: hidden;
     }
 
     .image-section img {
@@ -43,6 +59,11 @@
       max-width: 100%;
       object-fit: cover;
       border-radius: 0;
+      transition: transform 0.5s ease;
+    }
+
+    .image-section img:hover {
+      transform: scale(1.05);
     }
 
     .text-section {
@@ -51,6 +72,7 @@
       display: flex;
       flex-direction: column;
       justify-content: center;
+      animation: fadeInUp 1.2s ease;
     }
 
     .text-section h1 {
@@ -83,7 +105,7 @@
     </div>
     <div class="text-section">
       <h1>Nguyễn Quyên</h1>
-      <p>"An impressive web designer known for fresh, creative ideas through tools like Figma and Canvas. Beyond design, I'm also passionate about music and aspire to become a songwriter.</p>
+      <p>"An impressive web designer known for fresh, creative ideas through tools like Figma and Canvas. Beyond design, I'm also passionate about music and aspire to become a songwriter."</p>
     </div>
   </div>
 
