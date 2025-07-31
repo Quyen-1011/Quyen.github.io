@@ -4,6 +4,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Profile</title>
+
+  <!-- Font Awesome (Icon) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+
   <style>
     * {
       box-sizing: border-box;
@@ -25,6 +29,7 @@
       max-width: 1000px;
       width: 100%;
       animation: fadeInUp 1s ease;
+      position: relative;
     }
 
     @keyframes fadeInUp {
@@ -44,6 +49,7 @@
       justify-content: space-between;
       gap: 20px;
       flex-wrap: wrap;
+      position: relative;
     }
 
     .image-section {
@@ -90,6 +96,43 @@
       line-height: 1.6;
     }
 
+    .social-links {
+      position: absolute;
+      top: 0;
+      right: 0;
+      display: flex;
+      gap: 10px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin: 10px;
+      padding: 8px 16px;
+      font-size: 0.9em;
+      border-radius: 20px;
+      text-decoration: none;
+      color: white;
+      transition: background 0.3s ease;
+    }
+
+    .facebook {
+      background-color: #3b5998;
+    }
+
+    .facebook:hover {
+      background-color: #2d4373;
+    }
+
+    .tiktok {
+      background-color: #000;
+    }
+
+    .tiktok:hover {
+      background-color: #333;
+    }
+
     @media (max-width: 768px) {
       .top-section {
         flex-direction: column;
@@ -110,6 +153,12 @@
       .name-section {
         margin-top: 20px;
       }
+
+      .social-links {
+        position: static;
+        margin-top: 20px;
+        justify-content: center;
+      }
     }
   </style>
 </head>
@@ -124,7 +173,16 @@
       <div class="name-section">
         <h1>Nguyễn Quyên</h1>
       </div>
+      <div class="social-links">
+        <a href="https://www.facebook.com/nquyen05.20" target="_blank" class="btn facebook">
+          <i class="fab fa-facebook-f"></i> Facebook
+        </a>
+        <a href="https://www.tiktok.com/@nguyenquyen1011?_t=ZS-8yTPMUJnxsV&_r=1" target="_blank" class="btn tiktok">
+          <i class="fab fa-tiktok"></i> TikTok
+        </a>
+      </div>
     </div>
+
     <div class="description">
       <p>"An impressive web designer known for fresh, creative ideas through tools like Figma and Canvas. Beyond design, I'm also passionate about music and aspire to become a songwriter."</p>
     </div>
