@@ -102,9 +102,7 @@
     .tiktok { background-color: #000; }
     .tiktok:hover { background-color: #333; }
 
-    .btn i {
-      font-size: 16px;
-    }
+    .btn i { font-size: 16px; }
 
     .description {
       margin-top: 30px;
@@ -119,21 +117,33 @@
       line-height: 1.6;
     }
 
-    /* About Me Section */
-    .education-section {
-      margin-top: 60px;
+    /* Section title with line */
+    .section-title {
       text-align: center;
+      margin: 80px 0 40px;
+      position: relative;
     }
 
-    .education-section h2 {
+    .section-title h2 {
+      display: inline-block;
+      padding: 0 20px;
+      background: #e1bee7;
       color: #00bcd4;
       font-size: 2.5em;
-      letter-spacing: 2px;
-      margin-bottom: 40px;
-      border-top: 1px solid #888;
-      border-bottom: 1px solid #888;
-      display: inline-block;
-      padding: 10px 40px;
+      font-weight: bold;
+      z-index: 1;
+      position: relative;
+    }
+
+    .section-title::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 5%;
+      right: 5%;
+      height: 2px;
+      background-color: #666;
+      z-index: 0;
     }
 
     .swiper {
@@ -189,7 +199,6 @@
 </head>
 <body>
   <div class="container">
-
     <!-- Top Section -->
     <div class="top-section">
       <div class="image-section">
@@ -215,10 +224,14 @@
     <div class="description">
       <p>"An impressive web designer, known for fresh, innovative ideas through tools like Figma and Canvas. Besides design, I am passionate about music and aspire to be a musician and web designer."</p>
     </div>
-    <div class="divider"></div>
-    <!-- About Me Section -->
-    <section class="education-section">
+
+    <!-- About Me Section Title -->
+    <div class="section-title">
       <h2>ABOUT ME</h2>
+    </div>
+
+    <!-- About Me Slider -->
+    <section class="education-section">
       <div class="swiper mySwiper">
         <div class="swiper-wrapper">
           <div class="swiper-slide card">
@@ -262,12 +275,8 @@
         delay: 4000,
       },
       breakpoints: {
-        768: {
-          slidesPerView: 2,
-        },
-        1024: {
-          slidesPerView: 3,
-        }
+        768: { slidesPerView: 2 },
+        1024: { slidesPerView: 3 }
       }
     });
   </script>
