@@ -5,14 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Nguyen Quyen Profile</title>
 
-  <!-- Font Awesome (Icon) -->
+  <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+  <!-- Swiper (Slider) -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
 
   <style>
-    * {
-      box-sizing: border-box;
-    }
-
+    * { box-sizing: border-box; }
     body {
       margin: 0;
       font-family: 'Segoe UI', sans-serif;
@@ -28,29 +27,23 @@
     }
 
     @keyframes fadeInUp {
-      from {
-        opacity: 0;
-        transform: translateY(40px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+      from { opacity: 0; transform: translateY(40px); }
+      to   { opacity: 1; transform: translateY(0); }
     }
 
-    /* PROFILE SECTION */
     .top-section {
       display: flex;
       align-items: center;
-      justify-content: space-between;
       gap: 20px;
       flex-wrap: wrap;
       position: relative;
+      justify-content: flex-start;
     }
 
     .image-section {
       display: flex;
       gap: 20px;
+      position: relative;
     }
 
     .image-section img {
@@ -66,11 +59,37 @@
       transform: scale(1.05);
     }
 
+    .social-links {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 14px;
+      font-size: 0.85em;
+      border-radius: 20px;
+      text-decoration: none;
+      color: white;
+      transition: background 0.3s ease;
+    }
+
+    .facebook { background-color: #3b5998; }
+    .facebook:hover { background-color: #2d4373; }
+    .tiktok { background-color: #000; }
+    .tiktok:hover { background-color: #333; }
+
     .name-section {
+      flex: 1;
       display: flex;
       justify-content: center;
       align-items: center;
-      flex: 1;
     }
 
     .name-section h1 {
@@ -81,7 +100,7 @@
 
     .description {
       margin-top: 30px;
-      text-align: left;
+      text-align: center;
     }
 
     .description p {
@@ -92,44 +111,7 @@
       line-height: 1.6;
     }
 
-    .social-links {
-      position: absolute;
-      top: 0;
-      right: 0;
-      display: flex;
-      gap: 10px;
-    }
-
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      margin: 10px 0;
-      padding: 8px 16px;
-      font-size: 0.9em;
-      border-radius: 20px;
-      text-decoration: none;
-      color: white;
-      transition: background 0.3s ease;
-    }
-
-    .facebook {
-      background-color: #3b5998;
-    }
-
-    .facebook:hover {
-      background-color: #2d4373;
-    }
-
-    .tiktok {
-      background-color: #000;
-    }
-
-    .tiktok:hover {
-      background-color: #333;
-    }
-
-    /* EDUCATION SECTION */
+    /* About Me Section */
     .education-section {
       margin-top: 60px;
       text-align: center;
@@ -146,31 +128,20 @@
       padding: 10px 40px;
     }
 
-    .cards {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 30px;
-      margin-top: 30px;
+    .swiper {
+      padding: 20px 0;
     }
 
-    .card {
+    .swiper-slide.card {
       background-color: #fff;
-      color: #212121;
       border: 1px solid #ccc;
       border-radius: 12px;
       padding: 20px;
       width: 300px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-      transition: transform 0.3s ease;
     }
 
-    .card:hover {
-      transform: translateY(-5px);
-      border-color: #00bcd4;
-    }
-
-    .card img {
+    .swiper-slide.card img {
       width: 100%;
       height: 160px;
       object-fit: cover;
@@ -178,110 +149,110 @@
       margin-bottom: 12px;
     }
 
-    .card h3 {
+    .swiper-slide.card h3 {
       margin: 0;
       font-size: 1.2em;
       font-weight: bold;
     }
 
-    .card p {
-      margin: 10px 0 0;
+    .swiper-slide.card p {
+      margin-top: 10px;
       font-size: 0.95em;
       color: #555;
-      line-height: 1.5;
     }
 
-    /* RESPONSIVE */
     @media (max-width: 768px) {
       .top-section {
         flex-direction: column;
         align-items: center;
       }
-
       .image-section {
-        flex-direction: row;
-        flex-wrap: wrap;
         justify-content: center;
+        flex-wrap: wrap;
       }
-
-      .image-section img {
-        width: 45%;
-        height: auto;
-      }
-
       .name-section {
         margin-top: 20px;
       }
-
       .social-links {
         position: static;
-        margin-top: 20px;
-        justify-content: center;
-      }
-
-      .card {
-        width: 100%;
+        flex-direction: row;
+        margin-top: 15px;
       }
     }
   </style>
 </head>
 <body>
-
   <div class="container">
 
-    <!-- Profile Section -->
+    <!-- Top Section -->
     <div class="top-section">
       <div class="image-section">
         <img src="20240929_131322_140.jpg" alt="Nguyen Quyen 1">
         <img src="retouch_2024080217250829.jpg" alt="Nguyen Quyen 2">
+
+        <div class="social-links">
+          <a href="https://www.facebook.com/nquyen05.20" target="_blank" class="btn facebook">
+            <i class="fab fa-facebook-f"></i> Facebook
+          </a>
+          <a href="https://www.tiktok.com/@nguyenquyen1011" target="_blank" class="btn tiktok">
+            <i class="fab fa-tiktok"></i> TikTok
+          </a>
+        </div>
       </div>
       <div class="name-section">
         <h1>NGUYEN QUYEN</h1>
       </div>
-      <div class="social-links">
-        <a href="https://www.facebook.com/nquyen05.20" target="_blank" class="btn facebook">
-          <i class="fab fa-facebook-f"></i> Facebook
-        </a>
-        <a href="https://www.tiktok.com/@nguyenquyen1011?_t=ZS-8yTPMUJnxsV&_r=1" target="_blank" class="btn tiktok">
-          <i class="fab fa-tiktok"></i> TikTok
-        </a>
-      </div>
     </div>
 
+    <!-- Description -->
     <div class="description">
-      <p>"An impressive web designer, known for his fresh, innovative ideas through tools like Figma and Canvas. Besides design, I am passionate about music and aspire to be a musician and web designer."
-</p>
+      <p>"An impressive web designer, known for fresh, innovative ideas through tools like Figma and Canvas. Besides design, I am passionate about music and aspire to be a musician and web designer."</p>
     </div>
 
-    <!-- Education Section -->
+    <!-- About Me Section -->
     <section class="education-section">
       <h2>ABOUT ME</h2>
       <div class="swiper mySwiper">
         <div class="swiper-wrapper">
           <div class="swiper-slide card">
-          <h3>2015</h3>
-          <img src="z6858075423337_f94773b286e2a506213656ee2c7a8bc8.jpg" alt="Piano">
-          <p><strong>START LEARNING PIANO</strong><br></p>
-        </div>
-        <div class="swiper-slide card">
-          <h3>2020</h3>
-          <img src="z6858696587195_6735fd53f4380036bc36648caa20eebc.jpg" alt="Play piano at the church">
-          <p><strong>Forum at the Church</strong><br></p>
-        </div>
-        <div class="swiper-slide card">
-          <h3>2022</h3>
-          <img src="z6858704132783_9b2d3423984631347139fbf425d0b38d.jpg" alt="Love children">
-          <p><strong>volunteer with the church to go to places with orphans</strong><br></p>
-        </div>
-        <div class="swiper-slide card">
-          <h3>2022</h3>
-          <img src="z6858704132783_9b2d3423984631347139fbf425d0b38d.jpg" alt="Love children">
-          <p><strong>volunteer with the church to go to places with orphans</strong><br></p>
+            <h3>2015</h3>
+            <img src="z6858075423337_f94773b286e2a506213656ee2c7a8bc8.jpg" alt="Piano">
+            <p><strong>START LEARNING PIANO</strong></p>
+          </div>
+          <div class="swiper-slide card">
+            <h3>2020</h3>
+            <img src="z6858696587195_6735fd53f4380036bc36648caa20eebc.jpg" alt="Church">
+            <p><strong>PLAY PIANO AT THE CHURCH</strong></p>
+          </div>
+          <div class="swiper-slide card">
+            <h3>2022</h3>
+            <img src="z6858704132783_9b2d3423984631347139fbf425d0b38d.jpg" alt="Orphans">
+            <p><strong>VOLUNTEER WITH THE CHURCH TO HELP ORPHANS</strong></p>
+          </div>
         </div>
       </div>
     </section>
-
   </div>
 
+  <!-- Swiper JS -->
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <script>
+    var swiper = new Swiper(".mySwiper", {
+      slidesPerView: 1,
+      spaceBetween: 30,
+      loop: true,
+      autoplay: {
+        delay: 4000,
+      },
+      breakpoints: {
+        768: {
+          slidesPerView: 2,
+        },
+        1024: {
+          slidesPerView: 3,
+        }
+      }
+    });
+  </script>
 </body>
 </html>
