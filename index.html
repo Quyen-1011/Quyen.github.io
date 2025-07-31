@@ -36,14 +36,14 @@
       align-items: center;
       gap: 20px;
       flex-wrap: wrap;
-      position: relative;
       justify-content: flex-start;
+      position: relative;
     }
 
     .image-section {
       display: flex;
       gap: 20px;
-      position: relative;
+      flex-wrap: wrap;
     }
 
     .image-section img {
@@ -59,37 +59,12 @@
       transform: scale(1.05);
     }
 
-    .social-links {
-      position: absolute;
-      top: 10px;
-      right: 10px;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 8px 14px;
-      font-size: 0.85em;
-      border-radius: 20px;
-      text-decoration: none;
-      color: white;
-      transition: background 0.3s ease;
-    }
-
-    .facebook { background-color: #3b5998; }
-    .facebook:hover { background-color: #2d4373; }
-    .tiktok { background-color: #000; }
-    .tiktok:hover { background-color: #333; }
-
     .name-section {
       flex: 1;
       display: flex;
       justify-content: center;
       align-items: center;
+      position: relative;
     }
 
     .name-section h1 {
@@ -97,6 +72,49 @@
       color: #4a148c;
       margin: 0;
     }
+
+    .social-links {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  display: flex;
+  gap: 12px;
+  z-index: 1;
+}
+
+.btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  font-size: 14px;
+  font-weight: 500;
+  border-radius: 30px;
+  text-decoration: none;
+  color: white;
+  transition: background 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.facebook {
+  background-color: #3b5998;
+}
+
+.facebook:hover {
+  background-color: #2d4373;
+}
+
+.tiktok {
+  background-color: #000;
+}
+
+.tiktok:hover {
+  background-color: #333;
+}
+
+.btn i {
+  font-size: 16px;
+}
 
     .description {
       margin-top: 30px;
@@ -168,14 +186,10 @@
       }
       .image-section {
         justify-content: center;
-        flex-wrap: wrap;
-      }
-      .name-section {
-        margin-top: 20px;
       }
       .social-links {
-        position: static;
         flex-direction: row;
+        position: static;
         margin-top: 15px;
       }
     }
@@ -189,18 +203,23 @@
       <div class="image-section">
         <img src="20240929_131322_140.jpg" alt="Nguyen Quyen 1">
         <img src="retouch_2024080217250829.jpg" alt="Nguyen Quyen 2">
-
-        <div class="social-links">
-          <a href="https://www.facebook.com/nquyen05.20" target="_blank" class="btn facebook">
-            <i class="fab fa-facebook-f"></i> Facebook
-          </a>
-          <a href="https://www.tiktok.com/@nguyenquyen1011" target="_blank" class="btn tiktok">
-            <i class="fab fa-tiktok"></i> TikTok
-          </a>
-        </div>
       </div>
-      <div class="name-section">
-        <h1>NGUYEN QUYEN</h1>
+
+     <div class="name-section">
+  <h1>NGUYEN QUYEN</h1>
+</div>
+
+<div class="social-links">
+  <a href="https://www.facebook.com/nquyen05.20" target="_blank" class="btn facebook">
+    <i class="fab fa-facebook-f"></i>
+    Facebook
+  </a>
+  <a href="https://www.tiktok.com/@nguyenquyen1011" target="_blank" class="btn tiktok">
+    <i class="fab fa-tiktok"></i>
+    TikTok
+  </a>
+</div>
+
       </div>
     </div>
 
