@@ -21,7 +21,7 @@
     }
 
     .container {
-      max-width: 1000px;
+      max-width: 1100px;
       margin: 0 auto;
       animation: fadeInUp 1s ease;
     }
@@ -74,47 +74,37 @@
     }
 
     .social-links {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  display: flex;
-  gap: 12px;
-  z-index: 1;
-}
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      display: flex;
+      gap: 12px;
+      z-index: 1;
+    }
 
-.btn {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  padding: 10px 16px;
-  font-size: 14px;
-  font-weight: 500;
-  border-radius: 30px;
-  text-decoration: none;
-  color: white;
-  transition: background 0.3s ease;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-}
+    .btn {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 16px;
+      font-size: 14px;
+      font-weight: 500;
+      border-radius: 30px;
+      text-decoration: none;
+      color: white;
+      transition: background 0.3s ease;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
 
-.facebook {
-  background-color: #3b5998;
-}
+    .facebook { background-color: #3b5998; }
+    .facebook:hover { background-color: #2d4373; }
 
-.facebook:hover {
-  background-color: #2d4373;
-}
+    .tiktok { background-color: #000; }
+    .tiktok:hover { background-color: #333; }
 
-.tiktok {
-  background-color: #000;
-}
-
-.tiktok:hover {
-  background-color: #333;
-}
-
-.btn i {
-  font-size: 16px;
-}
+    .btn i {
+      font-size: 16px;
+    }
 
     .description {
       margin-top: 30px;
@@ -153,30 +143,30 @@
     .swiper-slide.card {
       background-color: #fff;
       border: 1px solid #ccc;
-      border-radius: 12px;
+      border-radius: 16px;
       padding: 20px;
-      width: 300px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      width: 340px;
+      box-shadow: 0 6px 14px rgba(0,0,0,0.15);
     }
 
     .swiper-slide.card img {
       width: 100%;
-      height: 160px;
+      height: 220px;
       object-fit: cover;
-      border-radius: 8px;
-      margin-bottom: 12px;
+      border-radius: 12px;
+      margin-bottom: 15px;
     }
 
     .swiper-slide.card h3 {
       margin: 0;
-      font-size: 1.2em;
-      font-weight: bold;
+      font-size: 1.4em;
+      color: #6a1b9a;
     }
 
     .swiper-slide.card p {
       margin-top: 10px;
-      font-size: 0.95em;
-      color: #555;
+      font-size: 1em;
+      color: #444;
     }
 
     @media (max-width: 768px) {
@@ -184,9 +174,11 @@
         flex-direction: column;
         align-items: center;
       }
+
       .image-section {
         justify-content: center;
       }
+
       .social-links {
         flex-direction: row;
         position: static;
@@ -205,21 +197,17 @@
         <img src="retouch_2024080217250829.jpg" alt="Nguyen Quyen 2">
       </div>
 
-     <div class="name-section">
-  <h1>NGUYEN QUYEN</h1>
-</div>
+      <div class="name-section">
+        <h1>NGUYEN QUYEN</h1>
+      </div>
 
-<div class="social-links">
-  <a href="https://www.facebook.com/nquyen05.20" target="_blank" class="btn facebook">
-    <i class="fab fa-facebook-f"></i>
-    Facebook
-  </a>
-  <a href="https://www.tiktok.com/@nguyenquyen1011" target="_blank" class="btn tiktok">
-    <i class="fab fa-tiktok"></i>
-    TikTok
-  </a>
-</div>
-
+      <div class="social-links">
+        <a href="https://www.facebook.com/nquyen05.20" target="_blank" class="btn facebook">
+          <i class="fab fa-facebook-f"></i> Facebook
+        </a>
+        <a href="https://www.tiktok.com/@nguyenquyen1011" target="_blank" class="btn tiktok">
+          <i class="fab fa-tiktok"></i> TikTok
+        </a>
       </div>
     </div>
 
