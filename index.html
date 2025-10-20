@@ -1,53 +1,55 @@
-import React, { useState } from 'react'
 
-export default function OnlineInvitationCard() {
-  const [name, setName] = useState('Người bạn thân mến')
-  const [showCard, setShowCard] = useState(false)
+from flask import Flask, render_template_string, request
 
-  const handleGenerate = () => setShowCard(true)
+app = Flask(__name__)
 
-  return (
-    <div className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-br from-[#f7f2e9] to-[#e6d5b8] text-[#4b3a26] p-6">
-      {!showCard ? (
-        <div className="bg-white/70 shadow-xl p-8 rounded-2xl w-full max-w-md text-center">
-          <h1 className="text-3xl font-bold mb-4">Tạo Thiệp Mời Trực Tuyến</h1>
-          <p className="mb-6 text-lg">Nhập tên người bạn muốn mời để tạo thiệp mời online.</p>
-          <input
-            type="text"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            placeholder="Nhập tên người được mời..."
-            className="border border-gray-400 rounded-lg px-4 py-2 w-full mb-4 focus:outline-none focus:ring-2 focus:ring-amber-600"
-          />
-          <button
-            onClick={handleGenerate}
-            className="bg-amber-700 hover:bg-amber-800 text-white px-6 py-2 rounded-lg transition"
-          >
-            Tạo thiệp
-          </button>
-        </div>
-      ) : (
-        <div className="bg-white shadow-2xl rounded-3xl p-10 text-center w-full max-w-2xl relative">
-          <h2 className="text-4xl font-serif mb-6 text-[#5b4636]">THIỆP MỜI SINH NHẬT</h2>
-          <p className="text-lg leading-relaxed mb-8">
-            Trân trọng kính mời <span className="font-semibold">{name}</span> đến tham dự buổi gặp gỡ thân mật.
-            <br /><br />
-            ⏰ <strong>Thời gian:</strong> 19h00, Thứ Bảy ngày 26 tháng 10 năm 2025
-            <br />
-            📍 <strong>Địa điểm:</strong> Nhà Hàng Ánh Dương, 25 Nguyễn Văn Linh, TP. Đà Nẵng
-            <br /><br />
-            Rất mong được đón tiếp Quý khách trong không khí ấm cúng và vui vẻ.
-          </p>
-          <p className="text-right text-[#7a6048] text-xl font-medium italic">Thân mời,<br />Ban Tổ Chức</p>
-
-          <button
-            onClick={() => setShowCard(false)}
-            className="mt-8 bg-amber-600 hover:bg-amber-700 text-white px-6 py-2 rounded-lg transition"
-          >
-            Tạo thiệp khác
-          </button>
-        </div>
-      )}
+HTML_TEMPLATE = '''
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Thiệp Mời Sinh Nhật</title>
+    <style>
+        body {font-family: 'Segoe UI', sans-serif; background: linear-gradient(135deg,#f7f2e9,#e6d5b8); color: #4b3a26; display: flex; align-items: center; justify-content: center; height: 100vh; margin: 0;}
+        .card, .form {background: rgba(255,255,255,0.85); padding: 30px; border-radius: 20px; box-shadow: 0 6px 16px rgba(0,0,0,0.2); text-align: center; max-width: 600px;}
+        input {width: 100%; padding: 10px; border-radius: 8px; border: 1px solid #aaa; margin-bottom: 20px;}
+        button {background: #b5895a; color: white; border: none; padding: 10px 20px; border-radius: 8px; cursor: pointer;}
+        button:hover {background: #946c3a;}
+        h1, h2 {margin-bottom: 20px;}
+    </style>
+</head>
+<body>
+    {% if not name %}
+    <div class="form">
+        <h1>Tạo Thiệp Mời Sinh Nhật Online</h1>
+        <form method="post">
+            <input type="text" name="name" placeholder="Nhập tên người được mời..." required>
+            <button type="submit">Tạo thiệp</button>
+        </form>
     </div>
-  )
-}
+    {% else %}
+    <div class="card">
+        <h2>THIỆP MỜI SINH NHẬT</h2>
+        <p>Trân trọng kính mời <strong>{{ name }}</strong> đến tham dự buổi gặp gỡ thân mật.</p>
+        <p>⏰ <b>Thời gian:</b> 19h00, Thứ Bảy ngày 26 tháng 10 năm 2025<br>
+        📍 <b>Địa điểm:</b> Nhà Hàng Ánh Dương, 25 Nguyễn Văn Linh, TP. Đà Nẵng</p>
+        <p>Rất mong được đón tiếp Quý khách trong không khí ấm cúng và vui vẻ.</p>
+        <p style="text-align:right;font-style:italic;">Thân mời,<br>Ban Tổ Chức</p>
+        <form method="get">
+            <button type="submit">Tạo thiệp khác</button>
+        </form>
+    </div>
+    {% endif %}
+</body>
+</html>
+'''
+
+@app.route('/', methods=['GET', 'POST'])
+def index():
+    if request.method == 'POST':
+        name = request.form.get('name')
+        return render_template_string(HTML_TEMPLATE, name=name)
+    return render_template_string(HTML_TEMPLATE, name=None)
+
+if __name__ == '__main__':
+    app.run(debug=True)
