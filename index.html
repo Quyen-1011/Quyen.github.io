@@ -9,7 +9,7 @@
 
     body {
       font-family: 'Poppins', sans-serif;
-      background: radial-gradient(circle at center, #111, #000);
+      background: radial-gradient(circle at center, #0a0a0a, #000);
       color: #f5d76e;
       display: flex;
       justify-content: center;
@@ -19,7 +19,6 @@
       overflow: hidden;
     }
 
-    /* Hiệu ứng pháo hoa */
     .firework {
       position: absolute;
       width: 4px;
@@ -36,12 +35,12 @@
 
     .envelope {
       position: relative;
-      width: 320px;
-      height: 220px;
-      background: linear-gradient(145deg, #333, #000);
+      width: 340px;
+      height: 240px;
+      background: linear-gradient(145deg, #222, #000);
       border: 2px solid gold;
-      border-radius: 12px;
-      box-shadow: 0 0 30px rgba(255,215,0,0.3);
+      border-radius: 16px;
+      box-shadow: 0 0 30px rgba(255,215,0,0.4);
       display: flex;
       justify-content: center;
       align-items: center;
@@ -49,30 +48,30 @@
       transition: transform 0.5s ease, box-shadow 0.5s ease;
     }
     .envelope:hover {
-      transform: scale(1.1) rotate(3deg);
-      box-shadow: 0 0 40px rgba(255,215,0,0.6);
+      transform: scale(1.08) rotate(2deg);
+      box-shadow: 0 0 40px rgba(255,215,0,0.7);
     }
     .envelope::before {
       content: '✉️';
-      font-size: 60px;
+      font-size: 70px;
       color: gold;
       animation: bounce 1.5s infinite;
     }
     @keyframes bounce {
       0%, 100% {transform: translateY(0);}
-      50% {transform: translateY(-8px);}
+      50% {transform: translateY(-10px);}
     }
 
     .container {
       display: none;
-      background: rgba(20, 20, 20, 0.95);
-      padding: 30px;
-      border-radius: 24px;
+      background: rgba(15, 15, 15, 0.97);
+      padding: 40px;
+      border-radius: 28px;
       text-align: center;
-      box-shadow: 0 0 25px rgba(255,215,0,0.2);
-      border: 1px solid rgba(255,215,0,0.3);
-      width: 360px;
-      animation: fadeIn 1.5s ease forwards;
+      box-shadow: 0 0 35px rgba(255,215,0,0.25);
+      border: 1px solid rgba(255,215,0,0.4);
+      width: 400px;
+      animation: fadeIn 1.2s ease forwards;
       position: relative;
     }
     @keyframes fadeIn {
@@ -82,9 +81,9 @@
 
     h1 {
       color: #f1d37a;
-      font-size: 1.5em;
-      margin-bottom: 12px;
-      text-shadow: 0 0 15px gold;
+      font-size: 1.7em;
+      margin-bottom: 15px;
+      text-shadow: 0 0 20px gold;
       animation: glow 2s ease-in-out infinite alternate;
     }
     @keyframes glow {
@@ -93,18 +92,16 @@
     }
 
     .photo {
-      width: 85%;
-      max-height: 180px;
-      object-fit: cover;
-      border-radius: 12px;
-      margin-bottom: 15px;
+      width: 100%;
+      border-radius: 16px;
+      margin-bottom: 20px;
       border: 2px solid rgba(255,215,0,0.2);
-      box-shadow: 0 0 15px rgba(255,215,0,0.2);
+      box-shadow: 0 0 25px rgba(255,215,0,0.25);
       transition: transform 0.4s ease;
     }
     .photo:hover { transform: scale(1.05); }
 
-    p { margin: 8px 0; font-size: 0.95em; line-height: 1.4em; }
+    p { margin: 8px 0; font-size: 1em; line-height: 1.5em; }
   </style>
 </head>
 <body>
@@ -118,9 +115,9 @@
     <h1>🎉 THIỆP MỜI SINH NHẬT 🎉</h1>
     <img src="https://cdn.pixabay.com/photo/2016/03/09/09/22/birthday-1241219_1280.jpg" class="photo" />
     <p>✨ Trân trọng kính mời <span style="color:#f1d37a;font-weight:600;">bạn</span> đến dự bữa tiệc sinh nhật tuổi 20 ✨</p>
-    <p>⏰ <b>Thời gian:</b> 19h00, Thứ Bảy ngày 26 tháng 10 năm 2025</p>
-    <p>📍 <b>Địa điểm:</b> SKY Lounge, 12 Trần Phú, TP. Đà Nẵng</p>
-    <p style="font-style:italic; margin-top:15px;">Trân trọng,<br><b>Ban Tổ Chức</b></p>
+    <p>⏰ <b>Thời gian:</b> 17h00, Thứ Bảy ngày 08 tháng 11 năm 2025</p>
+    <p>📍 <b>Địa điểm:</b> 451/12 Khu Phố Phan Bội Châu, Xã Dầu Giây, Thống Nhất, Đồng Nai</p>
+    <p style="font-style:italic; margin-top:15px;">Trân trọng,<br><b>Quyên</b></p>
   </div>
 
   <script>
