@@ -1,50 +1,53 @@
-from PIL import Image, ImageDraw, ImageFont
-import os
+import React, { useState } from 'react'
 
-# --- Cấu hình cơ bản ---
-ASSETS_DIR = 'assets'  # Thư mục chứa font và logo
-OUTPUT_FILE = 'thiep_moi.png'  # Tên file xuất ra
+export default function OnlineInvitationCard() {
+  const [name, setName] = useState('Người bạn thân mến')
+  const [showCard, setShowCard] = useState(false)
 
-# --- Tạo nền thiệp ---
-img = Image.new('RGB', (900, 600), color=(247, 242, 233))  # màu be sang trọng
-draw = ImageDraw.Draw(img)
+  const handleGenerate = () => setShowCard(true)
 
-# --- Viền thiệp ---
-draw.rectangle([(40, 40), (860, 560)], outline=(120, 100, 80), width=3)
+  return (
+    <div className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-br from-[#f7f2e9] to-[#e6d5b8] text-[#4b3a26] p-6">
+      {!showCard ? (
+        <div className="bg-white/70 shadow-xl p-8 rounded-2xl w-full max-w-md text-center">
+          <h1 className="text-3xl font-bold mb-4">Tạo Thiệp Mời Trực Tuyến</h1>
+          <p className="mb-6 text-lg">Nhập tên người bạn muốn mời để tạo thiệp mời online.</p>
+          <input
+            type="text"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            placeholder="Nhập tên người được mời..."
+            className="border border-gray-400 rounded-lg px-4 py-2 w-full mb-4 focus:outline-none focus:ring-2 focus:ring-amber-600"
+          />
+          <button
+            onClick={handleGenerate}
+            className="bg-amber-700 hover:bg-amber-800 text-white px-6 py-2 rounded-lg transition"
+          >
+            Tạo thiệp
+          </button>
+        </div>
+      ) : (
+        <div className="bg-white shadow-2xl rounded-3xl p-10 text-center w-full max-w-2xl relative">
+          <h2 className="text-4xl font-serif mb-6 text-[#5b4636]">THIỆP MỜI SINH NHẬT</h2>
+          <p className="text-lg leading-relaxed mb-8">
+            Trân trọng kính mời <span className="font-semibold">{name}</span> đến tham dự buổi gặp gỡ thân mật.
+            <br /><br />
+            ⏰ <strong>Thời gian:</strong> 19h00, Thứ Bảy ngày 26 tháng 10 năm 2025
+            <br />
+            📍 <strong>Địa điểm:</strong> Nhà Hàng Ánh Dương, 25 Nguyễn Văn Linh, TP. Đà Nẵng
+            <br /><br />
+            Rất mong được đón tiếp Quý khách trong không khí ấm cúng và vui vẻ.
+          </p>
+          <p className="text-right text-[#7a6048] text-xl font-medium italic">Thân mời,<br />Ban Tổ Chức</p>
 
-# --- Nạp font ---
-# Đảm bảo bạn có file font.ttf trong thư mục assets (ví dụ PlayfairDisplay-VariableFont_wght.ttf)
-font_title = ImageFont.truetype(os.path.join(ASSETS_DIR, 'font.ttf'), 56)
-font_body = ImageFont.truetype(os.path.join(ASSETS_DIR, 'font.ttf'), 28)
-font_signature = ImageFont.truetype(os.path.join(ASSETS_DIR, 'font.ttf'), 30)
-
-# --- Nội dung thiệp ---
-title_text = "THIỆP MỜI THÂN MẬT"
-body_text = (
-    "Trân trọng kính mời Quý khách đến tham dự buổi gặp gỡ thân mật.\n\n"
-    "⏰ Thời gian: 19h00, Thứ Bảy ngày 26 tháng 10 năm 2025\n"
-    "📍 Địa điểm: Nhà Hàng Ánh Dương, 25 Nguyễn Văn Linh, TP. Đà Nẵng\n\n"
-    "Rất mong được đón tiếp Quý khách trong không khí ấm cúng và vui vẻ."
-)
-signature_text = "Thân mời,\nBan Tổ Chức"
-
-# --- Căn giữa tiêu đề ---
-W, H = img.size
-tw, th = draw.textsize(title_text, font=font_title)
-draw.text(((W - tw) / 2, 90), title_text, fill=(80, 60, 40), font=font_title)
-
-# --- Thân bài ---
-draw.multiline_text((120, 220), body_text, fill=(90, 70, 50), font=font_body, spacing=10)
-
-# --- Chữ ký ---
-draw.multiline_text((W - 300, H - 140), signature_text, fill=(110, 85, 60), font=font_signature, spacing=8)
-
-# --- Logo (nếu có) ---
-logo_path = os.path.join(ASSETS_DIR, 'logo.png')
-if os.path.exists(logo_path):
-    logo = Image.open(logo_path).resize((80, 80))
-    img.paste(logo, (70, 450))
-
-# --- Xuất thiệp ---
-img.save(OUTPUT_FILE)
-print(f"✅ Thiệp mời đã được tạo: {OUTPUT_FILE}")
+          <button
+            onClick={() => setShowCard(false)}
+            className="mt-8 bg-amber-600 hover:bg-amber-700 text-white px-6 py-2 rounded-lg transition"
+          >
+            Tạo thiệp khác
+          </button>
+        </div>
+      )}
+    </div>
+  )
+}
