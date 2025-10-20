@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Thiệp Mời Sinh Nhật Sang Trọng</title>
   <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
     body {
       font-family: 'Poppins', sans-serif;
       background: radial-gradient(circle at center, #111, #000);
@@ -16,11 +18,27 @@
       margin: 0;
       overflow: hidden;
     }
+
+    /* Hiệu ứng pháo hoa */
+    .firework {
+      position: absolute;
+      width: 4px;
+      height: 4px;
+      background: gold;
+      border-radius: 50%;
+      animation: explode 1s ease-out infinite;
+      opacity: 0;
+    }
+    @keyframes explode {
+      0% {transform: scale(0); opacity: 1;}
+      100% {transform: scale(15); opacity: 0;}
+    }
+
     .envelope {
       position: relative;
       width: 320px;
       height: 220px;
-      background: #222;
+      background: linear-gradient(145deg, #333, #000);
       border: 2px solid gold;
       border-radius: 12px;
       box-shadow: 0 0 30px rgba(255,215,0,0.3);
@@ -28,16 +46,23 @@
       justify-content: center;
       align-items: center;
       cursor: pointer;
-      transition: transform 0.5s ease;
+      transition: transform 0.5s ease, box-shadow 0.5s ease;
     }
     .envelope:hover {
-      transform: scale(1.05);
+      transform: scale(1.1) rotate(3deg);
+      box-shadow: 0 0 40px rgba(255,215,0,0.6);
     }
     .envelope::before {
       content: '✉️';
-      font-size: 48px;
+      font-size: 60px;
       color: gold;
+      animation: bounce 1.5s infinite;
     }
+    @keyframes bounce {
+      0%, 100% {transform: translateY(0);}
+      50% {transform: translateY(-8px);}
+    }
+
     .container {
       display: none;
       background: rgba(20, 20, 20, 0.95);
@@ -46,38 +71,99 @@
       text-align: center;
       box-shadow: 0 0 25px rgba(255,215,0,0.2);
       border: 1px solid rgba(255,215,0,0.3);
-      width: 360px;
-      animation: fadeIn 1s ease forwards;
+      width: 380px;
+      animation: fadeIn 1.5s ease forwards;
+      position: relative;
     }
     @keyframes fadeIn {
-      from {opacity: 0; transform: scale(0.8);}
-      to {opacity: 1; transform: scale(1);}
+      from {opacity: 0; transform: scale(0.8) rotate(-5deg);}
+      to {opacity: 1; transform: scale(1) rotate(0deg);}
     }
-    h1, h2 { color: #f1d37a; }
+
+    h1 {
+      color: #f1d37a;
+      font-size: 1.6em;
+      margin-bottom: 15px;
+      text-shadow: 0 0 15px gold;
+      animation: glow 2s ease-in-out infinite alternate;
+    }
+    @keyframes glow {
+      from {text-shadow: 0 0 10px gold;}
+      to {text-shadow: 0 0 25px #ffd700;}
+    }
+
     .photo {
       width: 100%;
       border-radius: 16px;
       margin-bottom: 20px;
       border: 2px solid rgba(255,215,0,0.2);
+      box-shadow: 0 0 20px rgba(255,215,0,0.2);
+      transition: transform 0.4s ease;
     }
+    .photo:hover { transform: scale(1.05); }
+
+    p { margin: 8px 0; }
   </style>
 </head>
 <body>
+  <div class="firework" style="top:20%; left:20%; animation-delay:0s"></div>
+  <div class="firework" style="top:40%; left:70%; animation-delay:0.5s"></div>
+  <div class="firework" style="top:60%; left:50%; animation-delay:1s"></div>
+
   <div class="envelope" id="envelope" onclick="openEnvelope()"></div>
 
   <div class="container" id="cardContainer">
     <h1>🎉 THIỆP MỜI SINH NHẬT 🎉</h1>
     <img src="https://cdn.pixabay.com/photo/2016/03/09/09/22/birthday-1241219_1280.jpg" class="photo" />
-    <p>Trân trọng kính mời <span style="color:#f1d37a;font-weight:600;">bạn</span> đến tham dự buổi tiệc sinh nhật tuổi 20 sang trọng.</p>
+    <p>✨ Trân trọng kính mời <span style="color:#f1d37a;font-weight:600;">bạn</span> đến dự bữa tiệc sinh nhật tuổi 20 ✨</p>
     <p>⏰ <b>Thời gian:</b> 19h00, Thứ Bảy ngày 26 tháng 10 năm 2025</p>
     <p>📍 <b>Địa điểm:</b> SKY Lounge, 12 Trần Phú, TP. Đà Nẵng</p>
-    <p style="font-style:italic;">Trân trọng,<br><b>Ban Tổ Chức</b></p>
+    <p style="font-style:italic; margin-top:15px;">Trân trọng,<br><b>Ban Tổ Chức</b></p>
   </div>
 
   <script>
     function openEnvelope() {
       document.getElementById('envelope').style.display = 'none';
       document.getElementById('cardContainer').style.display = 'block';
+      launchConfetti();
+    }
+
+    // Hiệu ứng confetti bay ra
+    function launchConfetti() {
+      for (let i = 0; i < 80; i++) {
+        const confetti = document.createElement('div');
+        confetti.style.position = 'fixed';
+        confetti.style.width = '6px';
+        confetti.style.height = '12px';
+        confetti.style.background = `hsl(${Math.random() * 360}, 100%, 60%)`;
+        confetti.style.left = Math.random() * window.innerWidth + 'px';
+        confetti.style.top = '-20px';
+        confetti.style.opacity = 0.8;
+        confetti.style.transform = `rotate(${Math.random()*360}deg)`;
+        document.body.appendChild(confetti);
+        animateConfetti(confetti);
+      }
+    }
+
+    function animateConfetti(el) {
+      const endY = window.innerHeight + 100;
+      const duration = 4000 + Math.random() * 3000;
+      const startX = parseFloat(el.style.left);
+      const offsetX = (Math.random() - 0.5) * 200;
+
+      let startTime = null;
+      function frame(time) {
+        if (!startTime) startTime = time;
+        const progress = (time - startTime) / duration;
+        const y = progress * endY;
+        const x = startX + offsetX * Math.sin(progress * Math.PI);
+        el.style.top = y + 'px';
+        el.style.left = x + 'px';
+        el.style.opacity = 1 - progress;
+        if (progress < 1) requestAnimationFrame(frame);
+        else el.remove();
+      }
+      requestAnimationFrame(frame);
     }
   </script>
 </body>
