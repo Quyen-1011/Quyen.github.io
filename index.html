@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Thiệp Mời Sinh Nhật </title>
+  <title>Thiệp Mời Sinh Nhật Sang Trọng</title>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
 
@@ -66,12 +66,12 @@
     .container {
       display: none;
       background: rgba(20, 20, 20, 0.95);
-      padding: 40px;
+      padding: 30px;
       border-radius: 24px;
       text-align: center;
       box-shadow: 0 0 25px rgba(255,215,0,0.2);
       border: 1px solid rgba(255,215,0,0.3);
-      width: 380px;
+      width: 360px;
       animation: fadeIn 1.5s ease forwards;
       position: relative;
     }
@@ -82,8 +82,8 @@
 
     h1 {
       color: #f1d37a;
-      font-size: 1.6em;
-      margin-bottom: 15px;
+      font-size: 1.5em;
+      margin-bottom: 12px;
       text-shadow: 0 0 15px gold;
       animation: glow 2s ease-in-out infinite alternate;
     }
@@ -93,16 +93,18 @@
     }
 
     .photo {
-      width: 100%;
-      border-radius: 16px;
-      margin-bottom: 20px;
+      width: 85%;
+      max-height: 180px;
+      object-fit: cover;
+      border-radius: 12px;
+      margin-bottom: 15px;
       border: 2px solid rgba(255,215,0,0.2);
-      box-shadow: 0 0 20px rgba(255,215,0,0.2);
+      box-shadow: 0 0 15px rgba(255,215,0,0.2);
       transition: transform 0.4s ease;
     }
     .photo:hover { transform: scale(1.05); }
 
-    p { margin: 8px 0; }
+    p { margin: 8px 0; font-size: 0.95em; line-height: 1.4em; }
   </style>
 </head>
 <body>
@@ -114,11 +116,11 @@
 
   <div class="container" id="cardContainer">
     <h1>🎉 THIỆP MỜI SINH NHẬT 🎉</h1>
-    <img src="z7135173001671_8e0d23bebe4eb9e666023d0d2c7af477.jpg" class="photo" />
+    <img src="https://cdn.pixabay.com/photo/2016/03/09/09/22/birthday-1241219_1280.jpg" class="photo" />
     <p>✨ Trân trọng kính mời <span style="color:#f1d37a;font-weight:600;">bạn</span> đến dự bữa tiệc sinh nhật tuổi 20 ✨</p>
-    <p>⏰ <b>Thời gian:</b> 17h00, Thứ Bảy ngày 08 tháng 11 năm 2025</p>
-    <p>📍 <b>Địa điểm:</b> (Tại nhà) 451/12 khu phố Phan Bội Châu, Xã Dầu Giây, Thống Nhất, Đồng Nai</p>
-    <p style="font-style:italic; margin-top:15px;">Trân trọng,<br><b>Quyên</b></p>
+    <p>⏰ <b>Thời gian:</b> 19h00, Thứ Bảy ngày 26 tháng 10 năm 2025</p>
+    <p>📍 <b>Địa điểm:</b> SKY Lounge, 12 Trần Phú, TP. Đà Nẵng</p>
+    <p style="font-style:italic; margin-top:15px;">Trân trọng,<br><b>Ban Tổ Chức</b></p>
   </div>
 
   <script>
@@ -128,7 +130,6 @@
       launchConfetti();
     }
 
-    // Hiệu ứng confetti bay ra
     function launchConfetti() {
       for (let i = 0; i < 80; i++) {
         const confetti = document.createElement('div');
