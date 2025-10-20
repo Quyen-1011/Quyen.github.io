@@ -1,336 +1,50 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Nguyen Quyen Profile</title>
+from PIL import Image, ImageDraw, ImageFont
+import os
 
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
-  <!-- Swiper (Slider) -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+# --- Cấu hình cơ bản ---
+ASSETS_DIR = 'assets'  # Thư mục chứa font và logo
+OUTPUT_FILE = 'thiep_moi.png'  # Tên file xuất ra
 
-  <!-- Tailwind CSS CDN -->
-  <script src="https://cdn.tailwindcss.com"></script>
+# --- Tạo nền thiệp ---
+img = Image.new('RGB', (900, 600), color=(247, 242, 233))  # màu be sang trọng
+draw = ImageDraw.Draw(img)
 
-  <style>
-    * { box-sizing: border-box; }
-    body {
-      margin: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background: linear-gradient(135deg, #e0f7fa, #e1bee7);
-      color: #212121;
-      padding: 40px 20px;
-    }
+# --- Viền thiệp ---
+draw.rectangle([(40, 40), (860, 560)], outline=(120, 100, 80), width=3)
 
-    .container {
-      max-width: 1100px;
-      margin: 0 auto;
-      animation: fadeInUp 1s ease;
-    }
+# --- Nạp font ---
+# Đảm bảo bạn có file font.ttf trong thư mục assets (ví dụ PlayfairDisplay-VariableFont_wght.ttf)
+font_title = ImageFont.truetype(os.path.join(ASSETS_DIR, 'font.ttf'), 56)
+font_body = ImageFont.truetype(os.path.join(ASSETS_DIR, 'font.ttf'), 28)
+font_signature = ImageFont.truetype(os.path.join(ASSETS_DIR, 'font.ttf'), 30)
 
-    @keyframes fadeInUp {
-      from { opacity: 0; transform: translateY(40px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
+# --- Nội dung thiệp ---
+title_text = "THIỆP MỜI THÂN MẬT"
+body_text = (
+    "Trân trọng kính mời Quý khách đến tham dự buổi gặp gỡ thân mật.\n\n"
+    "⏰ Thời gian: 19h00, Thứ Bảy ngày 26 tháng 10 năm 2025\n"
+    "📍 Địa điểm: Nhà Hàng Ánh Dương, 25 Nguyễn Văn Linh, TP. Đà Nẵng\n\n"
+    "Rất mong được đón tiếp Quý khách trong không khí ấm cúng và vui vẻ."
+)
+signature_text = "Thân mời,\nBan Tổ Chức"
 
-    .top-section {
-      display: flex;
-      align-items: center;
-      gap: 20px;
-      flex-wrap: wrap;
-      justify-content: flex-start;
-      position: relative;
-    }
+# --- Căn giữa tiêu đề ---
+W, H = img.size
+tw, th = draw.textsize(title_text, font=font_title)
+draw.text(((W - tw) / 2, 90), title_text, fill=(80, 60, 40), font=font_title)
 
-    .image-section {
-      display: flex;
-      gap: 20px;
-      flex-wrap: wrap;
-    }
+# --- Thân bài ---
+draw.multiline_text((120, 220), body_text, fill=(90, 70, 50), font=font_body, spacing=10)
 
-    .image-section img {
-      width: 220px;
-      height: 300px;
-      object-fit: cover;
-      border-radius: 16px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-      transition: transform 0.4s ease;
-    }
+# --- Chữ ký ---
+draw.multiline_text((W - 300, H - 140), signature_text, fill=(110, 85, 60), font=font_signature, spacing=8)
 
-    .image-section img:hover {
-      transform: scale(1.05);
-    }
+# --- Logo (nếu có) ---
+logo_path = os.path.join(ASSETS_DIR, 'logo.png')
+if os.path.exists(logo_path):
+    logo = Image.open(logo_path).resize((80, 80))
+    img.paste(logo, (70, 450))
 
-    .name-section {
-      flex: 1;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      position: relative;
-    }
-
-    .name-section h1 {
-      font-size: 3em;
-      color: #4a148c;
-      margin: 0;
-    }
-
-    .social-links {
-      position: absolute;
-      top: 20px;
-      right: 20px;
-      display: flex;
-      gap: 12px;
-      z-index: 1;
-    }
-
-    .btn {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      padding: 10px 16px;
-      font-size: 14px;
-      font-weight: 500;
-      border-radius: 30px;
-      text-decoration: none;
-      color: white;
-      transition: background 0.3s ease;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-    }
-
-    .facebook { background-color: #3b5998; }
-    .facebook:hover { background-color: #2d4373; }
-
-    .tiktok { background-color: #000; }
-    .tiktok:hover { background-color: #333; }
-
-    .btn i { font-size: 16px; }
-
-    .description {
-      margin-top: 30px;
-      text-align: left;
-    }
-
-    .description p {
-      font-size: 1.2em;
-      color: #555;
-      max-width: 800px;
-      margin: 0 auto;
-      line-height: 1.6;
-    }
-
-    .section-title {
-      text-align: center;
-      margin: 80px 0 40px;
-      position: relative;
-    }
-
-    .section-title h2 {
-      display: inline-block;
-      padding: 0 20px;
-      background: #e1bee7;
-      color: #00bcd4;
-      font-size: 2.5em;
-      font-weight: bold;
-      z-index: 1;
-      position: relative;
-    }
-
-    .section-title::before {
-  content: '';
-  position: absolute;
-  top: 50%;
-  left: 0;
-  right: 0;
-  height: 2px;
-  background-color: #666;
-  z-index: 0;
-  transform: translateY(-50%);
-}
-
-
-    .swiper {
-      padding: 20px 0;
-    }
-
-    .swiper-slide.card {
-      background-color: #fff;
-      border: 1px solid #ccc;
-      border-radius: 16px;
-      padding: 20px;
-      width: 340px;
-      box-shadow: 0 6px 14px rgba(0,0,0,0.15);
-    }
-
-    .swiper-slide.card img {
-      width: 100%;
-      height: 220px;
-      object-fit: cover;
-      border-radius: 12px;
-      margin-bottom: 15px;
-    }
-
-    .swiper-slide.card h3 {
-      margin: 0;
-      font-size: 1.4em;
-      color: #6a1b9a;
-    }
-
-    .swiper-slide.card p {
-      margin-top: 10px;
-      font-size: 1em;
-      color: #444;
-    }
-
-    @media (max-width: 768px) {
-      .top-section {
-        flex-direction: column;
-        align-items: center;
-      }
-
-      .image-section {
-        justify-content: center;
-      }
-
-      .social-links {
-        flex-direction: row;
-        position: static;
-        margin-top: 15px;
-      }
-    }
-  </style>
-</head>
-<body>
-  <div class="container">
-    <!-- Top Section -->
-    <div class="top-section">
-      <div class="image-section">
-        <img src="20240929_131322_140.jpg" alt="Nguyen Quyen 1">
-        <img src="retouch_2024080217250829.jpg" alt="Nguyen Quyen 2">
-      </div>
-
-      <div class="name-section">
-        <h1>NGUYEN QUYEN</h1>
-      </div>
-
-      <div class="social-links">
-        <a href="https://www.facebook.com/nquyen05.20" target="_blank" class="btn facebook">
-          <i class="fab fa-facebook-f"></i> Facebook
-        </a>
-        <a href="https://www.tiktok.com/@nguyenquyen1011" target="_blank" class="btn tiktok">
-          <i class="fab fa-tiktok"></i> TikTok
-        </a>
-      </div>
-    </div>
-
-    <!-- Description -->
-    <div class="description">
-      <p>"An impressive web designer, known for fresh, innovative ideas through tools like Figma and Canvas. Besides design, I am passionate about music and aspire to be a musician and web designer."</p>
-    </div>
-
-    <!-- About Me Section Title -->
-    <div class="section-title">
-      <h2>ABOUT ME</h2>
-    </div>
-
-    <!-- About Me Slider -->
-    <section class="education-section">
-      <div class="swiper mySwiper">
-        <div class="swiper-wrapper">
-          <div class="swiper-slide card">
-            <h3>2015</h3>
-            <img src="z6858075423337_f94773b286e2a506213656ee2c7a8bc8.jpg" alt="Piano">
-            <p><strong>START LEARNING PIANO</strong></p>
-          </div>
-          <div class="swiper-slide card">
-            <h3>2020</h3>
-            <img src="z6858696587195_6735fd53f4380036bc36648caa20eebc.jpg" alt="Church">
-            <p><strong>PLAY PIANO AT THE CHURCH</strong></p>
-          </div>
-          <div class="swiper-slide card">
-            <h3>2022</h3>
-            <img src="z6858704132783_9b2d3423984631347139fbf425d0b38d.jpg" alt="children">
-            <p><strong>VOLUNTEER WITH THE CHURCH TO HELP ORPHANS</strong></p>
-          </div>
-          <div class="swiper-slide card">
-            <h3>2024</h3>
-            <img src="z6858139221552_60ca5a08dca3060dad2fa38ea9b1b466.jpg" alt="Camera">
-            <p><strong>I love taking pictures and traveling everywhere</strong></p>
-          </div>
-          <div class="swiper-slide card">
-            <h3>2023 - 2027</h3>
-            <img src="z6806191877794_6e96853b33310b326acede37f2d1ca22.jpg">
-            <p><strong>Bachelor of Information Technology</strong></p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- MY SKILLS SECTION -->
-    <section class="py-12 px-6 bg-gradient-to-br from-white to-purple-100" id="skills">
-      <h2 class="text-3xl font-bold text-center text-purple-800 mb-10">MY SKILLS</h2>
-
-      <div class="max-w-4xl mx-auto space-y-6">
-        <!-- Skill Item -->
-        <div>
-          <div class="flex justify-between mb-1">
-            <span class="text-base font-medium text-purple-700">Figma</span>
-            <span class="text-sm font-medium text-purple-700">90%</span>
-          </div>
-          <div class="w-full bg-purple-200 rounded-full h-4">
-            <div class="bg-purple-500 h-4 rounded-full" style="width: 90%"></div>
-          </div>
-        </div>
-
-        <div>
-          <div class="flex justify-between mb-1">
-            <span class="text-base font-medium text-purple-700">HTML & CSS</span>
-            <span class="text-sm font-medium text-purple-700">80%</span>
-          </div>
-          <div class="w-full bg-purple-200 rounded-full h-4">
-            <div class="bg-purple-500 h-4 rounded-full" style="width: 80%"></div>
-          </div>
-        </div>
-
-        <div>
-          <div class="flex justify-between mb-1">
-            <span class="text-base font-medium text-purple-700">Canva</span>
-            <span class="text-sm font-medium text-purple-700">95%</span>
-          </div>
-          <div class="w-full bg-purple-200 rounded-full h-4">
-            <div class="bg-purple-500 h-4 rounded-full" style="width: 95%"></div>
-          </div>
-        </div>
-
-        <div>
-          <div class="flex justify-between mb-1">
-            <span class="text-base font-medium text-purple-700">Photography</span>
-            <span class="text-sm font-medium text-purple-700">75%</span>
-          </div>
-          <div class="w-full bg-purple-200 rounded-full h-4">
-            <div class="bg-purple-500 h-4 rounded-full" style="width: 75%"></div>
-          </div>
-        </div>
-      </div>
-    </section>
-  </div>
-
-  <!-- Swiper JS -->
-  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-  <script>
-    var swiper = new Swiper(".mySwiper", {
-      slidesPerView: 1,
-      spaceBetween: 30,
-      loop: true,
-      autoplay: {
-        delay: 4000,
-      },
-      breakpoints: {
-        768: { slidesPerView: 2 },
-        1024: { slidesPerView: 3 }
-      }
-    });
-  </script>
-</body>
-</html>
+# --- Xuất thiệp ---
+img.save(OUTPUT_FILE)
+print(f"✅ Thiệp mời đã được tạo: {OUTPUT_FILE}")
