@@ -54,29 +54,6 @@
       to {opacity: 1; transform: scale(1);}
     }
     h1, h2 { color: #f1d37a; }
-    input {
-      width: 100%;
-      padding: 12px;
-      border: 1px solid #444;
-      border-radius: 10px;
-      background-color: #111;
-      color: #f1f1f1;
-      margin-bottom: 20px;
-    }
-    button {
-      background: linear-gradient(135deg, #c9a227, #f1d37a);
-      color: #000;
-      border: none;
-      padding: 12px 24px;
-      border-radius: 10px;
-      font-weight: bold;
-      cursor: pointer;
-      transition: 0.3s;
-    }
-    button:hover {
-      transform: scale(1.05);
-      background: linear-gradient(135deg, #f1d37a, #c9a227);
-    }
     .photo {
       width: 100%;
       border-radius: 16px;
@@ -89,32 +66,18 @@
   <div class="envelope" id="envelope" onclick="openEnvelope()"></div>
 
   <div class="container" id="cardContainer">
-    <h1>Thiệp Mời Sang Trọng</h1>
-    <input type="text" id="nameInput" placeholder="Nhập tên người được mời..." />
-    <button onclick="createCard()">Tạo Thiệp</button>
-
-    <div id="card" style="display:none; margin-top:30px;">
-      <img src="https://cdn.pixabay.com/photo/2016/03/09/09/22/birthday-1241219_1280.jpg" class="photo" />
-      <h2>🎉 THIỆP MỜI SINH NHẬT 🎉</h2>
-      <p>Trân trọng kính mời <span id="guestName" style="color:#f1d37a;font-weight:600;"></span> đến tham dự buổi tiệc sinh nhật tuổi 20 sang trọng.</p>
-      <p>⏰ <b>Thời gian:</b> 19h00, Thứ Bảy ngày 26 tháng 10 năm 2025</p>
-      <p>📍 <b>Địa điểm:</b> SKY Lounge, 12 Trần Phú, TP. Đà Nẵng</p>
-      <p style="font-style:italic;">Trân trọng,<br><b>Ban Tổ Chức</b></p>
-    </div>
+    <h1>🎉 THIỆP MỜI SINH NHẬT 🎉</h1>
+    <img src="https://cdn.pixabay.com/photo/2016/03/09/09/22/birthday-1241219_1280.jpg" class="photo" />
+    <p>Trân trọng kính mời <span style="color:#f1d37a;font-weight:600;">bạn</span> đến tham dự buổi tiệc sinh nhật tuổi 20 sang trọng.</p>
+    <p>⏰ <b>Thời gian:</b> 19h00, Thứ Bảy ngày 26 tháng 10 năm 2025</p>
+    <p>📍 <b>Địa điểm:</b> SKY Lounge, 12 Trần Phú, TP. Đà Nẵng</p>
+    <p style="font-style:italic;">Trân trọng,<br><b>Ban Tổ Chức</b></p>
   </div>
 
   <script>
     function openEnvelope() {
       document.getElementById('envelope').style.display = 'none';
       document.getElementById('cardContainer').style.display = 'block';
-    }
-
-    function createCard() {
-      const name = document.getElementById('nameInput').value.trim();
-      if (name) {
-        document.getElementById('guestName').textContent = name;
-        document.getElementById('card').style.display = 'block';
-      }
     }
   </script>
 </body>
